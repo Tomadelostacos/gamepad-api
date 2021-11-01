@@ -26,20 +26,4 @@ public class UserDao {
         this.simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("User");
     }
 
-    public void save(User user) {
-        Map<String,Object> params = new HashMap<String, Object>();
-        params.put("name", user.getFirstName());
-
-        simpleJdbcInsert.execute(params);
-    }
-
-    public User getById(long id) {
-        // ...
-        return new User();
-    }
-
-    public int getUserCount() {
-        return jdbcTemplate.queryForObject("SELECT count(1) FROM User", Integer.class);
-    }
-
 }

@@ -21,7 +21,9 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping(value="/add-user")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(value="/register")
+    @ResponseStatus(code= HttpStatus.CREATED)
     public void addUser(@RequestBody User userRecord)
     {
         userService.addUser(userRecord);
@@ -30,17 +32,8 @@ public class UserController {
     @GetMapping(path="/get", produces= "application/json")
     public User getUser() {
         User user = new User();
-        user.setFirstName("firstName");
-        user.setLastName("lastName");
         user.setMail("email@email.com");
         user.setPassword("azerty");
-        return user;
-    }
-
-    @PostMapping(path="/", consumes="application/json")
-    @ResponseStatus(code= HttpStatus.CREATED)
-    public User createUser(@RequestBody User user) {
-
         return user;
     }
 
